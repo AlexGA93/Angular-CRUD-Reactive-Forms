@@ -1,0 +1,69 @@
+<div class="container flex flex-row flex-wrap justify-content-center">
+  
+  <p-card 
+    header="Register User"
+    class=" container_form flex flex-row flex-wrap justify-content-center my-3"
+  >
+    <hr />
+    <form [formGroup]="myForm" autocomplete="off" (ngSubmit)="submitForm()">
+            
+      <div class="row mb-3">
+          <label class="col-sm-3 col-form-label">Username</label>
+          <div class="col-sm-9">
+          <input
+              formControlName="username"
+              type="text"
+              class="form-control"
+              placeholder="User's Name"
+          />
+          </div>
+      </div>
+
+      <div class="row mb-3">
+          <label class="col-sm-3 col-form-label">Name</label>
+          <div class="col-sm-9">
+          <input
+              formControlName="name"
+              type="text"
+              class="form-control"
+              placeholder="User's Name"
+          />
+          </div>
+      </div>
+
+      <div class="row mb-3">
+          <label class="col-sm-3 col-form-label">Email</label>
+          <div class="col-sm-9">
+          <input
+              formControlName="email"
+              type="email"
+              class="form-control"
+              placeholder="User's Email"
+          />
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button
+            [disabled]="myForm.invalid"
+            type="submit"
+            class="btn btn-primary float-start"
+          >
+            {{ addMode ? 'Add User' : 'Edit User' }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </p-card>
+  
+  <div class="flex flex-row flex-wrap justify-content-center table-container my-3">
+    <app-table 
+      class="container_table" 
+      [usersToTable]="users"
+      (userToForm)="dealWithChildData($event)"
+    ></app-table>
+  </div>
+  
+</div>
+
